@@ -1,0 +1,7 @@
+.table_header {
+  border-radius: 12px;
+  box-shadow: var(--main-shadow);
+}
+.table_header th {
+  padding: 12px;
+}

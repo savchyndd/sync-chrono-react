@@ -1,0 +1,45 @@
+.overlay {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-overlay);
+}
+
+.modal {
+  border-radius: 25px;
+  overflow: hidden;
+
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 24px);
+
+  padding: 32px;
+  background-color: var(--bg-color);
+}
+form {
+  display: grid;
+  gap: 8px;
+}
+form > label {
+  display: grid;
+  gap: 4px;
+}
+.field {
+  padding: 12px;
+
+  color: var(--main-color);
+  background: var(--bg-color);
+  box-shadow: var(--main-shadow-active);
+  border-radius: 8px;
+  border: none;
+}
+.field:focus {
+  outline: 2px inset var(--main-active-color);
+}
