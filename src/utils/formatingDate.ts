@@ -1,4 +1,4 @@
-export const formatingCreatedDate = (date) => {
+export const formatingCreatedDate = (date: string) => {
   const result = new Date(date).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -7,16 +7,16 @@ export const formatingCreatedDate = (date) => {
 
   return result;
 };
-export const formatingDate = (date) => {
+export const formatingDate = (date: string) => {
   const result = new Date(date).toLocaleDateString("en-US", {
-    month: "numeric",
     day: "numeric",
+    month: "numeric",
     year: "numeric",
   });
 
   return result;
 };
-export const formatingToFormDate = (date) => {
+export const formatingToFormDate = (date: string) => {
   const result = new Date(date).toLocaleDateString("en-CA", {
     year: "numeric",
     day: "numeric",

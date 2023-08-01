@@ -1,10 +1,13 @@
-const getSummaryData = (notesList) => {
+const getSummaryData = (notesList: []) => {
   const uniqueCategory = [
-    ...new Set(notesList.map(({ category }) => category)),
+    ...new Set(notesList.map(({ category }: { category: string }) => category)),
   ];
   const result = uniqueCategory.map((item) => {
     const count = notesList.reduce(
-      (acc, { category, arhived }) => {
+      (
+        acc: { totalArhived: number; totalActive: number },
+        { category, arhived }
+      ) => {
         if (category === item) {
           if (arhived) {
             acc.totalArhived += 1;

@@ -2,18 +2,15 @@ import { useState, FC, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 
 import { EDIT_NOTE_SUBMIT } from "../../../../constants/btnOptConst";
-import {
-  formatingDate,
-  formatingToFormDate,
-} from "../../../../utils/formatingDate.js";
+import { formatingToFormDate } from "../../../../utils/formatingDate";
 
-// import { selectNotesList } from "../../../../redux/selectors";
 import { editNote } from "../../../../redux/notesSlice";
 
 import Button from "../../Button/Button";
 
 import "../Modal.css";
 import { NoteType } from "../../../../types/NoteType";
+import { parseDate } from "../../../../utils/parseDate";
 
 type OnModalClose = () => void;
 type Note = NoteType;
@@ -28,37 +25,23 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
   const [name, setName] = useState(note.name);
   const [category, setCategory] = useState(note.category);
   const [content, setContent] = useState(note.content);
-  const [date, setDate] = useState(formatingToFormDate(note.date));
+  const [date, setDate] = useState(note.date);
   const [created, setCreated] = useState(formatingToFormDate(note.created));
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const formatDate = note.date;
-    let formatNewDate =
-      formatingDate(date) !== "Invalid Date" ? formatingDate(date) : "";
+    const dateList = parseDate(content, date);
 
-    if (formatDate.length > 0) {
-      if (
-        formatDate.split(",")[0].trim().length &&
-        formatNewDate.trim().length
-      ) {
-        const arrDate = formatDate.split(",");
-        arrDate.push(formatNewDate);
-        formatNewDate = arrDate.join(", ");
-      }
-
-      if (!formatNewDate.trim().length) {
-        formatNewDate = formatDate;
-      }
-    }
+    if (!name) return alert("Please write Name fields");
+    if (!content) return alert("Please write Content fields");
 
     const newNote = {
       ...note,
       name,
       category,
       content,
-      date: formatNewDate,
+      date: dateList ? dateList : "",
     };
 
     dispatch(editNote(newNote));
@@ -83,9 +66,9 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
     setContent(e.target.value);
   };
 
-  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setDate(e.target.value);
-  };
+  // const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setDate(e.target.value);
+  // };
 
   return (
     <div className="overlay" onClick={handleBackdropClick}>
@@ -122,16 +105,6 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
               type="text"
               value={content}
               onChange={handleContentChange}
-            />
-          </label>
-          <label>
-            Date
-            <input
-              name="date"
-              className="field"
-              type="date"
-              value={date}
-              onChange={handleDateChange}
             />
           </label>
           <label>

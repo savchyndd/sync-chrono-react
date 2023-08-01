@@ -2,10 +2,7 @@ import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CREATE_NOTE } from "../../../constants/btnOptConst";
-import {
-  formatingCreatedDate,
-  formatingDate,
-} from "../../../utils/formatingDate.js";
+import { formatingCreatedDate } from "../../../utils/formatingDate";
 
 import { selectNotesList } from "../../../redux/selectors";
 import { addNote } from "../../../redux/notesSlice";
@@ -13,6 +10,7 @@ import { addNote } from "../../../redux/notesSlice";
 import Button from "../Button/Button";
 
 import "./Modal.css";
+import { parseDate } from "../../../utils/parseDate";
 
 type OnModalClose = () => void;
 type Props = {
@@ -35,17 +33,20 @@ const Modal: FC<Props> = ({ onModalClose }) => {
     };
 
     const name = target.name.value;
-    const created = formatingCreatedDate(new Date());
+    const created = formatingCreatedDate(new Date().toDateString());
     const category = target.category.value;
     const content = target.content.value;
-    const date = formatingDate(target.date.value);
+    const date = parseDate(content);
+
+    if (!name) return alert("Please write Name fields");
+    if (!content) return alert("Please write Content fields");
 
     const newNote = {
       name,
       created,
       category,
       content,
-      date: date !== "Invalid Date" ? date : "",
+      date: date ? date : "",
     };
 
     dispatch(addNote(newNote));
@@ -100,15 +101,6 @@ const Modal: FC<Props> = ({ onModalClose }) => {
               className="field"
               type="text"
               value={notes.content}
-            />
-          </label>
-          <label>
-            Date
-            <input
-              name="date"
-              className="field"
-              type="date"
-              value={notes.date}
             />
           </label>
           <Button btnOption={CREATE_NOTE} />
