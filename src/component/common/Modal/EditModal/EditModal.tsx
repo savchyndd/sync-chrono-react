@@ -47,6 +47,11 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
         arrDate.push(formatNewDate);
         formatNewDate = arrDate.join(", ");
       }
+
+      if (!formatNewDate.trim().length) {
+        formatNewDate = formatDate;
+        console.log(formatNewDate);
+      }
     }
 
     const newNote = {
