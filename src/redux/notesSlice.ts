@@ -1,5 +1,6 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
-// import { NoteType } from "../types/NoteType";
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
+import { NoteType } from "../types/NoteType";
+
 const initialState = [
   {
     id: "1",
@@ -111,25 +112,16 @@ const initialState = [
     arhived: false,
   },
 ];
+
 const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
-    addNote: {
-      reducer(state, action) {
-        return [...state, action.payload];
-      },
-      // prepare(newNote) {
-      //   return {
-      //     payload: {
-      //       id: nanoid(),
-      //       arhived: false,
-      //       ...newNote,
-      //     },
-      //   };
-      // },
+    addNote: (state: any, action: PayloadAction<NoteType>) => {
+      const newNote = { ...action.payload, id: nanoid() };
+      return [...state, newNote];
     },
-    toggleArhivedNote: (state, action) => {
+    toggleArhivedNote: (state, action: PayloadAction<string>) => {
       return state.map((note) => {
         if (note.id !== action.payload) {
           return note;
@@ -137,29 +129,17 @@ const notesSlice = createSlice({
         return { ...note, arhived: !note.arhived };
       });
     },
-    editNote: (state, action) => {
+    editNote: (state, action: PayloadAction<NoteType>) => {
       const noteIdx = state.findIndex(({ id }) => id === action.payload.id);
-      // const newDate = new Date(newNote.date).toLocaleDateString("en-US", {
-      //   month: "numeric",
-      //   day: "numeric",
-      //   year: "numeric",
-      // });
-
-      // let allDate = "";
-
-      // if (newDate !== notes[noteIdx].date && newDate !== "Invalid Date") {
-      //   allDate = notes[noteIdx].date
-      //     ? `${notes[noteIdx].date}, ${newDate}`
-      //     : newDate;
-      // }
 
       state[noteIdx] = { ...state[noteIdx], ...action.payload };
     },
-    removeNote: (state, action) => {
+    removeNote: (state, action: PayloadAction<string>) => {
       return state.filter((note) => note.id !== action.payload);
     },
   },
 });
 
-export const { addNote } = notesSlice.actions;
+export const { addNote, toggleArhivedNote, editNote, removeNote } =
+  notesSlice.actions;
 export const notesReducer = notesSlice.reducer;

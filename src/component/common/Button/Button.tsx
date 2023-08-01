@@ -1,6 +1,7 @@
 import { FC, MouseEvent } from "react";
 
 import "./Button.css";
+
 type BtnOption = {
   name: string;
   text: string;

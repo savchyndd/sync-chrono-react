@@ -16,3 +16,12 @@ export const formatingDate = (date) => {
 
   return result;
 };
+export const formatingToFormDate = (date) => {
+  const result = new Date(date).toLocaleDateString("en-CA", {
+    year: "numeric",
+    day: "numeric",
+    month: "numeric",
+  });
+
+  return result;
+};

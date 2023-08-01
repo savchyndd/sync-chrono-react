@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { ReactChildrenProps } from "../../../types/ReactChildrenProps";
 
 import "./Table.css";

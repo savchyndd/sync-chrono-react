@@ -1,17 +1,18 @@
-import { FC, useState } from "react";
+import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { CREATE_NOTE } from "../../../constants/btnOptConst";
-
-import Button from "../Button/Button";
-
-import "./Modal.css";
 import {
   formatingCreatedDate,
   formatingDate,
 } from "../../../utils/formatingDate.js";
-import { useDispatch, useSelector } from "react-redux";
-import { addNote } from "../../../redux/notesSlice";
+
 import { selectNotesList } from "../../../redux/selectors";
+import { addNote } from "../../../redux/notesSlice";
+
+import Button from "../Button/Button";
+
+import "./Modal.css";
 
 type OnModalClose = () => void;
 type Props = {
@@ -21,10 +22,6 @@ type Props = {
 const Modal: FC<Props> = ({ onModalClose }) => {
   const dispatch = useDispatch();
   const notes = useSelector(selectNotesList);
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [content, setContent] = useState("");
-  const [date, setDate] = useState("");
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -50,7 +47,7 @@ const Modal: FC<Props> = ({ onModalClose }) => {
       content,
       date: date !== "Invalid Date" ? date : "",
     };
-    console.log(newNote);
+
     dispatch(addNote(newNote));
     onModalClose();
   };
