@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sync-chrono-react/static/css/main.7a5f2176.css",
+    "main.js": "/sync-chrono-react/static/js/main.bf63bee1.js",
+    "index.html": "/sync-chrono-react/index.html",
+    "main.7a5f2176.css.map": "/sync-chrono-react/static/css/main.7a5f2176.css.map",
+    "main.bf63bee1.js.map": "/sync-chrono-react/static/js/main.bf63bee1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7a5f2176.css",
+    "static/js/main.bf63bee1.js"
+  ]
+}
