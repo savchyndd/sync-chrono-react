@@ -38,8 +38,15 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
     let formatNewDate =
       formatingDate(date) !== "Invalid Date" ? formatingDate(date) : "";
 
-    if (!formatDate.includes(formatNewDate) || !formatNewDate.length) {
-      formatNewDate = formatDate.concat(`, ${formatNewDate}`);
+    if (formatDate.length > 0) {
+      if (
+        formatDate.split(",")[0].trim().length &&
+        formatNewDate.trim().length
+      ) {
+        const arrDate = formatDate.split(",");
+        arrDate.push(formatNewDate);
+        formatNewDate = arrDate.join(", ");
+      }
     }
 
     const newNote = {
