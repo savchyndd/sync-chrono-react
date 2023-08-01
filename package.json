@@ -2,6 +2,7 @@
   "name": "sync-chrono-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://savchyndd.github.io/sync-chrono-react/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
