@@ -50,7 +50,6 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
 
       if (!formatNewDate.trim().length) {
         formatNewDate = formatDate;
-        console.log(formatNewDate);
       }
     }
 
