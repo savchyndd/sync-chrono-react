@@ -1,4 +1,4 @@
-import { regexForDates } from "../component/constants/regexForDate";
+import { regexForDates } from "../constants/regexForDate";
 import { formatingDate } from "./formatingDate";
 
 export const parseDate = (content: string, date?: string) => {
