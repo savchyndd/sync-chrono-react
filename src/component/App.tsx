@@ -21,7 +21,7 @@ const App = () => {
       <Layout>
         <section>
           <div className="grid justify-center m-auto p-10 w-4/5">
-            <h1 className="text-center mb-0">Note APP</h1>
+            <h1 className="text-center mb-0 font-bold text-2xl">Note APP</h1>
             <ActiveTable />
             <Button btnOption={CREATE_NOTE} onClick={handleToogleModalOpen} />
             <SummaryTable />
