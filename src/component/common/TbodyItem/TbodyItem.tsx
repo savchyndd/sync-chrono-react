@@ -11,6 +11,8 @@ import { removeNote, toggleArhivedNote } from "../../../redux/notesSlice";
 import { useDispatch } from "react-redux";
 import EditModal from "../Modal/EditModal/EditModal";
 
+import "../Tbody/Tbody";
+
 type Props = {
   note: NoteTypeWhithId;
 };
@@ -30,7 +32,7 @@ const TbodyItem: FC<Props> = ({ note }) => {
     dispatch(removeNote(note.id));
   };
   return (
-    <tr key={note.id}>
+    <tr key={note.id} className="table_row">
       <td>{note.name}</td>
       <td>{note.created}</td>
       <td>{note.category}</td>
