@@ -25,13 +25,11 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
   const [name, setName] = useState(note.name);
   const [category, setCategory] = useState(note.category);
   const [content, setContent] = useState(note.content);
-  const [date, setDate] = useState(note.date);
-  const [created, setCreated] = useState(formatingToFormDate(note.created));
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const dateList = parseDate(content, date);
+    const dateList = parseDate(content, note.date);
 
     if (!name) return alert("Please write Name fields");
     if (!content) return alert("Please write Content fields");
@@ -65,10 +63,6 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
   const handleContentChange = (e: ChangeEvent<HTMLInputElement>) => {
     setContent(e.target.value);
   };
-
-  // const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setDate(e.target.value);
-  // };
 
   return (
     <div className="overlay" onClick={handleBackdropClick}>
@@ -114,7 +108,7 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
               className="field"
               type="date"
               disabled
-              value={created}
+              value={formatingToFormDate(note.created)}
             />
           </label>
           <Button btnOption={EDIT_NOTE_SUBMIT} />
