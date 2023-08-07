@@ -1,7 +1,5 @@
 import { FC } from "react";
 
-import "../Tbody.css";
-
 type TbodyList = {
   category: string;
   active: number;
@@ -14,10 +12,10 @@ const TbodySummary: FC<Props> = ({ tbodyList }) => {
     <tbody className="table-note">
       {tbodyList.map(({ category, active, arhived }, idx) => {
         return (
-          <tr key={idx} className="table_row">
-            <td>{category}</td>
-            <td>{active}</td>
-            <td>{arhived}</td>
+          <tr key={idx} className="rounded-xl shadow-second-shadow">
+            <td className="p-3">{category}</td>
+            <td className="p-3">{active}</td>
+            <td className="p-3">{arhived}</td>
           </tr>
         );
       })}

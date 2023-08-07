@@ -30,25 +30,25 @@ const TbodyItem: FC<Props> = ({ note }) => {
     dispatch(removeNote(note.id));
   };
   return (
-    <tr key={note.id}>
-      <td>{note.name}</td>
-      <td>{note.created}</td>
-      <td>{note.category}</td>
-      <td>{note.content}</td>
-      <td>{note.date}</td>
-      <td>
+    <tr key={note.id} className="rounded-xl shadow-second-shadow">
+      <td className="p-3">{note.name}</td>
+      <td className="p-3">{note.created}</td>
+      <td className="p-3">{note.category}</td>
+      <td className="p-3">{note.content}</td>
+      <td className="p-3">{note.date}</td>
+      <td className="p-3">
         <Button btnOption={EDIT_NOTE} onClick={handleToogleModalOpen} />
         {isModalOpen && (
           <EditModal onModalClose={handleToogleModalOpen} note={note} />
         )}
       </td>
-      <td>
+      <td className="p-3">
         <Button
           btnOption={!note.arhived ? ARHIVE_NOTE : UNARHIVE_NOTE}
           onClick={handleArhiveNote}
         />
       </td>
-      <td>
+      <td className="p-3">
         <Button btnOption={DELETE_NOTE} onClick={handleRemoveNote} />
       </td>
     </tr>

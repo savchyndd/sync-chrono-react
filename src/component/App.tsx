@@ -9,8 +9,6 @@ import SummaryTable from "./SummaryTable/SummaryTable";
 import Button from "./common/Button/Button";
 import Modal from "./common/Modal/Modal";
 
-import "./App.css";
-
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,8 +20,8 @@ const App = () => {
     <>
       <Layout>
         <section>
-          <div className="container">
-            <h1>Note APP</h1>
+          <div className="grid justify-center m-auto p-10 w-4/5">
+            <h1 className="text-center mb-0">Note APP</h1>
             <ActiveTable />
             <Button btnOption={CREATE_NOTE} onClick={handleToogleModalOpen} />
             <SummaryTable />

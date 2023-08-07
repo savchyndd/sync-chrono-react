@@ -8,7 +8,6 @@ import { editNote } from "../../../../redux/notesSlice";
 
 import Button from "../../Button/Button";
 
-import "../Modal.css";
 import { NoteType } from "../../../../types/NoteType";
 import { parseDate } from "../../../../utils/parseDate";
 
@@ -65,14 +64,17 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
   };
 
   return (
-    <div className="overlay" onClick={handleBackdropClick}>
-      <div className="modal">
-        <form className="form-edit-note" onSubmit={handleSubmit}>
-          <label>
+    <div
+      className="fixed z-99 top-0 left-0 w-screen h-screen overflow-y-scroll flex justify-center items-center bg-gradient-to-tr from-bg-overlay-from to-bg-overlay-to"
+      onClick={handleBackdropClick}
+    >
+      <div className="rounded-3xl overflow-hidden max-w-[calc(100vw - 48px)] max-h-[calc(100vh - 24px)] p-8 bg-bg-color">
+        <form className="grid gap-1" onSubmit={handleSubmit}>
+          <label className="grid text-left">
             Category
             <select
               name="category"
-              className="field"
+              className="p-3  text-main-color bg-bg-color shadow-main-shadow-active rounded-lg border-none focus:outline focus:outline-2 focus:outline-main-active-color"
               value={category}
               onChange={handleCategoryChange}
             >
@@ -81,31 +83,31 @@ const EditModal: FC<Props> = ({ onModalClose, note }) => {
               <option value="Idea">Idea</option>
             </select>
           </label>
-          <label>
+          <label className="grid text-left">
             Name
             <input
               name="name"
-              className="field"
+              className="p-3  text-main-color bg-bg-color shadow-main-shadow-active rounded-lg border-none focus:outline focus:outline-2 focus:outline-main-active-color"
               type="text"
               value={name}
               onChange={handleNameChange}
             />
           </label>
-          <label>
+          <label className="grid text-left">
             Content
             <input
               name="content"
-              className="field"
+              className="p-3  text-main-color bg-bg-color shadow-main-shadow-active rounded-lg border-none focus:outline focus:outline-2 focus:outline-main-active-color"
               type="text"
               value={content}
               onChange={handleContentChange}
             />
           </label>
-          <label>
+          <label className="grid text-left">
             Time of creation
             <input
               name="created"
-              className="field"
+              className="p-3  text-main-color bg-bg-color shadow-main-shadow-active rounded-lg border-none focus:outline focus:outline-2 focus:outline-main-active-color"
               type="date"
               disabled
               value={formatingToFormDate(note.created)}
