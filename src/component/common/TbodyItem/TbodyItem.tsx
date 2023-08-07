@@ -11,6 +11,8 @@ import { removeNote, toggleArhivedNote } from "../../../redux/notesSlice";
 import { useDispatch } from "react-redux";
 import EditModal from "../Modal/EditModal/EditModal";
 
+import "../Tbody/Tbody";
+
 type Props = {
   note: NoteTypeWhithId;
 };
@@ -37,6 +39,7 @@ const TbodyItem: FC<Props> = ({ note }) => {
       <td className="p-3">{note.content}</td>
       <td className="p-3">{note.date}</td>
       <td className="p-3">
+
         <Button btnOption={EDIT_NOTE} onClick={handleToogleModalOpen} />
         {isModalOpen && (
           <EditModal onModalClose={handleToogleModalOpen} note={note} />
