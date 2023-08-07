@@ -1,7 +1,0 @@
-.table_row {
-  border-radius: 12px;
-  box-shadow: var(--second-shadow);
-}
-.table_row td {
-  padding: 12px;
-}

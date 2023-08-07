@@ -1,16 +1,16 @@
 import { FC } from "react";
 
-import "./Thead.css";
-
 type TheadList = string[];
 type TheadProps = { theadList: TheadList };
 
 const Thead: FC<TheadProps> = ({ theadList }) => {
   return (
     <thead>
-      <tr className="table_header">
+      <tr className="rounded-xl shadow-main-shadow">
         {theadList.map((item, idx) => (
-          <th key={idx}>{item}</th>
+          <th key={idx} className="p-3">
+            {item}
+          </th>
         ))}
       </tr>
     </thead>

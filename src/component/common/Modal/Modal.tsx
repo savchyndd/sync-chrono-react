@@ -9,7 +9,6 @@ import { addNote } from "../../../redux/notesSlice";
 
 import Button from "../Button/Button";
 
-import "./Modal.css";
 import { parseDate } from "../../../utils/parseDate";
 
 type OnModalClose = () => void;
@@ -53,20 +52,6 @@ const Modal: FC<Props> = ({ onModalClose }) => {
     onModalClose();
   };
 
-  // useEffect(() => {
-  //   const handleKeydown = (e: KeyboardEvent): void => {
-  //     if (e.code === "Escape") {
-  //       onModalClose();
-  //     }
-  //   };
-
-  //   window.addEventListener("keydown", handleKeydown(e: KeyboardEvent));
-
-  //   return () => {
-  //     window.removeEventListener("keydown", handleKeydown);
-  //   };
-  // });
-
   const handleBackdropClick = ({ target, currentTarget }: any) => {
     if (currentTarget === target) {
       onModalClose();
@@ -74,31 +59,37 @@ const Modal: FC<Props> = ({ onModalClose }) => {
   };
 
   return (
-    <div className="overlay" onClick={handleBackdropClick}>
-      <div className="modal">
-        <form className="form-edit-note" onSubmit={handleSubmit}>
-          <label>
+    <div
+      className="fixed z-99 top-0 left-0 w-screen h-screen overflow-y-scroll flex justify-center items-center bg-gradient-to-tr from-bg-overlay-from to-bg-overlay-to"
+      onClick={handleBackdropClick}
+    >
+      <div className="rounded-3xl overflow-hidden max-w-[calc(100vw - 48px)] max-h-[calc(100vh - 24px)] p-8 bg-bg-color">
+        <form className="grid gap-1" onSubmit={handleSubmit}>
+          <label className="grid text-left">
             Category
-            <select name="category" className="field">
+            <select
+              name="category"
+              className="p-3  text-main-color bg-bg-color shadow-main-shadow-active rounded-lg border-none focus:outline focus:outline-2 focus:outline-main-active-color"
+            >
               <option value="Task">Task</option>
               <option value="Random thought">Random thought</option>
               <option value="Idea">Idea</option>
             </select>
           </label>
-          <label>
+          <label className="grid text-left">
             Name
             <input
               name="name"
-              className="field"
+              className="p-3  text-main-color bg-bg-color shadow-main-shadow-active rounded-lg border-none focus:outline focus:outline-2 focus:outline-main-active-color"
               type="text"
               value={notes.name}
             />
           </label>
-          <label>
+          <label className="grid text-left">
             Content
             <input
               name="content"
-              className="field"
+              className="p-3  text-main-color bg-bg-color shadow-main-shadow-active rounded-lg border-none focus:outline focus:outline-2 focus:outline-main-active-color"
               type="text"
               value={notes.content}
             />

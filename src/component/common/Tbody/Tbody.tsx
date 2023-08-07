@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-import "./Tbody.css";
 import TbodyItem from "../TbodyItem/TbodyItem";
 
 type TbodyList = {

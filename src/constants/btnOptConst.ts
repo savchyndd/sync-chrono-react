@@ -1,7 +1,7 @@
 export const CREATE_NOTE = {
   name: "",
   text: "Create Note",
-  class: "btn btn-create-note",
+  class: "btn",
 };
 export const EDIT_NOTE_SUBMIT = {
   name: "",
