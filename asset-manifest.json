@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/sync-chrono-react/static/css/main.7a5f2176.css",
-    "main.js": "/sync-chrono-react/static/js/main.bf63bee1.js",
+    "main.css": "/sync-chrono-react/static/css/main.64b77a69.css",
+    "main.js": "/sync-chrono-react/static/js/main.2d8c9c05.js",
     "index.html": "/sync-chrono-react/index.html",
-    "main.7a5f2176.css.map": "/sync-chrono-react/static/css/main.7a5f2176.css.map",
-    "main.bf63bee1.js.map": "/sync-chrono-react/static/js/main.bf63bee1.js.map"
+    "main.64b77a69.css.map": "/sync-chrono-react/static/css/main.64b77a69.css.map",
+    "main.2d8c9c05.js.map": "/sync-chrono-react/static/js/main.2d8c9c05.js.map"
   },
   "entrypoints": [
-    "static/css/main.7a5f2176.css",
-    "static/js/main.bf63bee1.js"
+    "static/css/main.64b77a69.css",
+    "static/js/main.2d8c9c05.js"
   ]
 }
