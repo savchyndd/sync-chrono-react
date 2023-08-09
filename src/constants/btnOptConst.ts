@@ -1,3 +1,8 @@
+export const DEFAULT = {
+  name: "",
+  text: "Button",
+  class: "btn",
+};
 export const CREATE_NOTE = {
   name: "",
   text: "Create Note",
@@ -19,7 +24,7 @@ export const ARHIVE_NOTE = {
   class: "btn-note",
 };
 export const UNARHIVE_NOTE = {
-  name: "Unarhive",
+  name: "unarhive",
   text: "Unarhive",
   class: "btn-note",
 };

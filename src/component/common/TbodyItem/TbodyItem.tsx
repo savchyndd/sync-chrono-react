@@ -31,6 +31,7 @@ const TbodyItem: FC<Props> = ({ note }) => {
   const handleRemoveNote = () => {
     dispatch(removeNote(note.id));
   };
+
   return (
     <tr key={note.id} className="rounded-xl shadow-second-shadow">
       <td className="p-3">{note.name}</td>
@@ -39,7 +40,6 @@ const TbodyItem: FC<Props> = ({ note }) => {
       <td className="p-3">{note.content}</td>
       <td className="p-3">{note.date}</td>
       <td className="p-3">
-
         <Button btnOption={EDIT_NOTE} onClick={handleToogleModalOpen} />
         {isModalOpen && (
           <EditModal onModalClose={handleToogleModalOpen} note={note} />
